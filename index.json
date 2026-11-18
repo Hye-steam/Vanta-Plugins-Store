@@ -351,6 +351,22 @@
       ],
       "version": "0.10.0",
       "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/wxichen.dsh-pet_0.10.0.zip"
+    },
+    {
+      "id": "vanta.niang",
+      "name": {
+        "default": "Vanta Niang",
+        "zh-CN": "Vanta娘"
+      },
+      "description": {
+        "default": "VantaCode's own desktop pet: per-state animation clips, speech bubbles, draggable overlay, adjustable size.",
+        "zh-CN": "VantaCode 自研桌宠：按状态播放动画片段，带气泡台词、可拖拽、可调大小。"
+      },
+      "author": "vanta",
+      "license": "MIT",
+      "version": "2.0.0",
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/vanta.niang_2.0.0.zip",
+      "repository": "https://github.com/Hye-steam/Vanta-Plugins-Store"
     }
   ]
 }
