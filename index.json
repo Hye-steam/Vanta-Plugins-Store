@@ -333,5 +333,24 @@
     ],
     "version": "0.10.0",
     "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/wxichen.dsh-pet_0.10.0.zip"
+  },
+  {
+    "id": "vanta.niang",
+    "name": {
+      "default": "Vanta Niang",
+      "zh-CN": "Vanta娘"
+    },
+    "description": {
+      "default": "VantaCode's original desktop pet, packaged as a plugin: 16-frame idle animation, state bubbles that follow AI runs, draggable, size adjustable.",
+      "zh-CN": "VantaCode 自带桌宠的插件版：16 帧待机动画、随 AI 运行状态切换气泡、可拖拽、可调大小。"
+    },
+    "author": "vanta",
+    "repository": "https://github.com/Hye-steam/Vanta-Plugins-Store",
+    "license": "MIT",
+    "version": "1.0.0",
+    "tags": [
+      "ui"
+    ],
+    "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/vanta.niang_1.0.0.zip"
   }
 ]
