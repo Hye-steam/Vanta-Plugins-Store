@@ -349,11 +349,11 @@
       "author": "vanta",
       "repository": "https://github.com/Hye-steam/Vanta-Plugins-Store",
       "license": "MIT",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "tags": [
         "ui"
       ],
-      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/vanta.niang_1.0.0.zip"
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/vanta.niang_1.0.1.zip"
     }
   ]
 }
