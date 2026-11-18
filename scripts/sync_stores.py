@@ -122,6 +122,24 @@ def main() -> int:
         entry["package_url"] = f"{RAW_BASE}/packages/{urllib.parse.quote(name)}"
         merged.append(entry)
 
+    # ── 自有插件：local/index.json 里的条目原样保留，不随上游同步消失 ──
+    local_index = ROOT / "local" / "index.json"
+    if local_index.is_file():
+        try:
+            local_entries = json.loads(local_index.read_text(encoding="utf-8"))
+        except Exception as exc:
+            print(f"[warn] local/index.json 解析失败：{exc}")
+            local_entries = []
+        for entry in local_entries:
+            url = entry.get("package_url") or ""
+            name = safe_name(urllib.parse.unquote(url.rsplit("/", 1)[-1])) if url else ""
+            if name and not (PACKAGES / name).is_file():
+                print(f"[warn] 自有插件缺少包文件 {name}，跳过 {entry.get('id')}")
+                continue
+            if name:
+                wanted_files.add(name)
+            merged = [e for e in merged if e.get("id") != entry.get("id")] + [entry]
+
     if not merged:
         print("上游全部不可用，保持现有索引不变")
         return 0
