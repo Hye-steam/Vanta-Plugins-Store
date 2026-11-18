@@ -150,7 +150,9 @@ def main() -> int:
             path.unlink()
             print(f"  删除已下架 {path.name}")
 
-    INDEX.write_text(json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8")
+    # 顶层必须是 {schema_version, plugins}：写成裸数组会被客户端判为「索引内容无效」。
+    document = {"schema_version": 1, "plugins": merged}
+    INDEX.write_text(json.dumps(document, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"索引已更新：{len(merged)} 个插件，{len(wanted_files)} 个包")
     return 0
 
