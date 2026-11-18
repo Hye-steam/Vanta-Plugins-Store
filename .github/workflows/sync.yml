@@ -1,0 +1,37 @@
+name: 同步上游插件商店
+
+on:
+  schedule:
+    # 每 6 小时同步一次；GitHub 的 cron 是 UTC，且高峰期可能延后几分钟
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 拉取上游索引与包
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/sync_stores.py
+
+      - name: 提交变更
+        run: |
+          git config user.name "vanta-store-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "上游无变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "sync: 同步上游插件商店 $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
