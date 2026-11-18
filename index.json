@@ -273,6 +273,68 @@
       "license": "MIT",
       "version": "2.1.0",
       "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/community.inpage-translator_2.1.0.zip"
+    },
+    {
+      "id": "jieapi.desktop-pet",
+      "name": {
+        "default": "Desktop Pet",
+        "zh-CN": "桌面宠物"
+      },
+      "description": {
+        "default": "A draggable, interactive desktop pet that reacts to AI run status. Long press for the menu; size and display timing are configurable.",
+        "zh-CN": "可拖拽、可点击互动的桌面宠物：跟随 AI 运行状态变化，长按打开菜单，可在配置页调整大小与显示时机。"
+      },
+      "author": "jieapi",
+      "repository": "https://github.com/jieapi/aicode-plugin-desktop-pet",
+      "logo": "https://raw.githubusercontent.com/jieapi/aicode-plugin-desktop-pet/main/icons/icon.png",
+      "license": "MIT",
+      "tags": [
+        "ui"
+      ],
+      "version": "1.1.0",
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/jieapi.desktop-pet_1.1.0.zip"
+    },
+    {
+      "id": "jieapi.remote-ports",
+      "name": {
+        "default": "Remote Ports",
+        "zh-CN": "远程端口",
+        "en": "Remote Ports"
+      },
+      "description": {
+        "default": "Expose ports from the remote SSH server on the phone's loopback, so the AI and the on-device browser can open dev servers behind NAT.",
+        "zh-CN": "把远程 SSH 服务器上的端口映射到手机本地，让 AI 与手机上的浏览器能打开 NAT 后面的开发服务器。"
+      },
+      "author": "jieapi",
+      "repository": "https://github.com/jieapi/aicode-plugin-remote-ports",
+      "license": "MIT",
+      "tags": [
+        "tool",
+        "ui"
+      ],
+      "version": "1.0.0",
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/jieapi.remote-ports_1.0.0.zip"
+    },
+    {
+      "id": "wxichen.dsh-pet",
+      "name": {
+        "default": "DSH Pet",
+        "zh-CN": "AiCode 桌宠"
+      },
+      "description": {
+        "default": "A floating desktop pet adapted from dsh-pet for AiCode. It plays transparent animations, reacts to AiCode runs, accepts chat prompts and can be controlled by AI tools.",
+        "zh-CN": "将 dsh-pet 适配到 AiCode 的悬浮桌宠：播放透明动画、响应 AiCode 运行状态、写入聊天提示词，并支持 AI 工具控制。"
+      },
+      "author": "wxichen",
+      "repository": "https://github.com/wxichen/aicode-plugins",
+      "logo": "https://raw.githubusercontent.com/wxichen/aicode-plugins/main/dsh-pet/assets/logo.png",
+      "license": "MIT",
+      "tags": [
+        "ui",
+        "other"
+      ],
+      "version": "0.10.0",
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/wxichen.dsh-pet_0.10.0.zip"
     }
   ]
 }
