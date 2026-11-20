@@ -2,8 +2,9 @@ name: 同步上游插件商店
 
 on:
   schedule:
-    # 每 6 小时同步一次；GitHub 的 cron 是 UTC，且高峰期可能延后几分钟
-    - cron: "0 */6 * * *"
+    # 每小时同步一次；GitHub 的 cron 是 UTC，且高峰期可能延后几分钟。
+    # 公开仓库不计 Actions 分钟数，单次跑几十秒，提高频率只换更新鲜的上游索引。
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 permissions:
