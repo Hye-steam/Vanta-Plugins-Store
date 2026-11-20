@@ -42,10 +42,21 @@ def get(url: str, binary: bool = False, timeout: int = 60):
     headers = {"User-Agent": "vanta-store-sync"}
     if TOKEN:
         headers["Authorization"] = f"token {TOKEN}"
-    req = urllib.request.Request(url, headers=headers)
+    # 上游包名可能含中文且未做 URL 编码（如「一束挽风.wb-gateway_1.5.2.zip」），
+    # urllib 只接受 ASCII，不先转义会直接报 'ascii' codec can't encode。
+    # 已编码的 %XX 会被 safe 集保留，不会二次转义。
+    req = urllib.request.Request(_quote_url(url), headers=headers)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         data = resp.read()
     return data if binary else data.decode("utf-8")
+
+
+def _quote_url(url: str) -> str:
+    """只转义路径与查询串里的非 ASCII 字符，保留 scheme://host 与已有的 %XX。"""
+    parts = urllib.parse.urlsplit(url)
+    path = urllib.parse.quote(parts.path, safe="/%")
+    query = urllib.parse.quote(parts.query, safe="=&%")
+    return urllib.parse.urlunsplit((parts.scheme, parts.netloc, path, query, parts.fragment))
 
 
 def load_entries(url: str) -> list:
@@ -64,8 +75,13 @@ def safe_name(name: str) -> str:
 
 
 def download(url: str, target: pathlib.Path) -> bool:
-    if target.is_file() and target.stat().st_size > 0:
-        return True
+    """拉取包文件到 target；已有同名文件时比对内容，不一致就覆盖。
+
+    不能只看「文件存在且非空」就跳过：上游换包时可能不改文件名（改版本号但沿用旧包名，
+    或同名包重新构建），那样旧包会永远留在本地、索引指向的还是旧内容。
+    这里用 HEAD 拿不到可靠摘要（部分 CDN 不返回 ETag 或 ETag 不稳定），
+    故直接下载后比字节——包都不大，比留着一堆隐形的陈旧文件安全。
+    """
     try:
         data = get(url, binary=True, timeout=180)
     except Exception as exc:
@@ -73,8 +89,14 @@ def download(url: str, target: pathlib.Path) -> bool:
         return False
     if not data:
         return False
+    if target.is_file():
+        existing = target.read_bytes()
+        if existing == data:
+            return True
+        print(f"  更新 {target.name} ({len(existing)} -> {len(data)} bytes)")
+    else:
+        print(f"  下载 {target.name} ({len(data)} bytes)")
     target.write_bytes(data)
-    print(f"  下载 {target.name} ({len(data)} bytes)")
     return True
 
 
@@ -104,6 +126,13 @@ def main() -> int:
             continue
         name = safe_name(urllib.parse.unquote(url.rsplit("/", 1)[-1]))
         if not download(url, PACKAGES / name):
+            # 下载失败但本地已有同名包：保留旧包与旧条目。
+            # 否则一次网络抖动就会把插件从索引里抹掉，并在下面的清理里删掉包。
+            if (PACKAGES / name).is_file() and (PACKAGES / name).stat().st_size > 0:
+                print(f"  保留旧包 {name}")
+                wanted_files.add(name)
+                entry["package_url"] = f"{RAW_BASE}/packages/{urllib.parse.quote(name)}"
+                merged.append(entry)
             continue
         wanted_files.add(name)
         entry["package_url"] = f"{RAW_BASE}/packages/{urllib.parse.quote(name)}"
@@ -120,6 +149,12 @@ def main() -> int:
             continue
         name = safe_name(asset_name)
         if not download(asset_url, PACKAGES / name):
+            if (PACKAGES / name).is_file() and (PACKAGES / name).stat().st_size > 0:
+                print(f"  保留旧包 {name}")
+                wanted_files.add(name)
+                entry["version"] = version or entry.get("version")
+                entry["package_url"] = f"{RAW_BASE}/packages/{urllib.parse.quote(name)}"
+                merged.append(entry)
             continue
         wanted_files.add(name)
         entry["version"] = version or entry.get("version")
