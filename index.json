@@ -395,6 +395,26 @@
       "version": "2.6.49",
       "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/vanta.niang_2.6.49.zip",
       "repository": "https://github.com/Hye-steam/Vanta-Plugins-Store"
+    },
+    {
+      "id": "vanta.gateway",
+      "name": {
+        "default": "VantaGate",
+        "zh-CN": "VantaGate 网关"
+      },
+      "description": {
+        "default": "Local OpenAI-compatible gateway that pools free model channels into one provider. Runs a resident HTTP server and registers itself as a provider automatically.",
+        "zh-CN": "本地 OpenAI 兼容网关，把多个免费模型渠道汇成一个供应商。插件常驻并自动注册为供应商，装完即可在模型列表里选到。"
+      },
+      "author": "vanta",
+      "license": "GPL-3.0",
+      "version": "0.1.0",
+      "tags": [
+        "provider",
+        "integration"
+      ],
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/vanta.gateway_0.1.0.zip",
+      "repository": "https://github.com/Hye-steam/VantaCode-Desktop"
     }
   ]
 }
