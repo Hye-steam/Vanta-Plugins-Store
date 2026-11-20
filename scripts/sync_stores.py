@@ -2,8 +2,12 @@
 """把上游插件商店同步到本仓库。
 
 上游有两个：
-  - Muse 商店（index.json 直接带 package_url）
+  - Nox 商店（index.json 直接带 package_url）
   - AiCode 商店（index.json 不带包地址，包在各仓库的 GitHub Release 里）
+
+Nox 商店仓库原名 xzyy03/Muse-Plugins-Store，2026-11 改名并换品牌。
+旧地址目前仍能取到内容（GitHub 对改名仓库保留 raw 重定向），但随时可能失效，
+故直接指向新地址。
 
 同步规则：
   * 新插件 → 下载包进 packages/，索引里指向本仓库
@@ -28,7 +32,7 @@ INDEX = ROOT / "index.json"
 
 RAW_BASE = "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main"
 
-MUSE_INDEX = "https://raw.githubusercontent.com/xzyy03/Muse-Plugins-Store/main/index.json"
+NOX_INDEX = "https://raw.githubusercontent.com/xzyy03/Nox-Plugins-Store/main/index.json"
 AICODE_INDEX = "https://raw.githubusercontent.com/jieapi/AiCode-Plugins-Store/main/index.json"
 
 TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or ""
@@ -93,8 +97,8 @@ def main() -> int:
     merged = []
     wanted_files = set()
 
-    # ── Muse：索引自带直链 ──
-    for entry in load_entries(MUSE_INDEX):
+    # ── Nox：索引自带直链 ──
+    for entry in load_entries(NOX_INDEX):
         url = entry.get("package_url") or ""
         if not url:
             continue
