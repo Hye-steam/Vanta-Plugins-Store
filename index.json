@@ -425,12 +425,12 @@
       },
       "author": "vanta",
       "license": "GPL-3.0",
-      "version": "1.0.53",
+      "version": "1.0.54",
       "tags": [
         "provider",
         "integration"
       ],
-      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/vanta.gateway_1.0.53.zip",
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/vanta.gateway_1.0.54.zip",
       "repository": "https://github.com/Hye-steam/VantaCode-Desktop"
     }
   ]
