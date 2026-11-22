@@ -411,6 +411,29 @@
       "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/jieapi.remote-ports_1.0.0.zip"
     },
     {
+      "id": "wxichen.guizang-design",
+      "name": {
+        "default": "Guizang Design",
+        "zh-CN": "歸藏设计"
+      },
+      "description": {
+        "default": "Port of the guizang-design DSH plugin: web decks, social cards, page layout, de-AI editing and a voice profile, sharing one design system, plus a work library that keeps every piece you deliver.",
+        "zh-CN": "从 DSH 插件移植：网页 PPT、图文卡片、网页排版、去 AI 味四个技能，外加一个学你写作语气的语气档案；五个技能共用一套设计系统，做过的作品自动收进作品库，可以一键做同款。"
+      },
+      "author": "wxichen",
+      "repository": "https://github.com/wxichen/aicode-plugins",
+      "logo": "https://raw.githubusercontent.com/wxichen/aicode-plugins/main/guizang-design/assets/icon.png",
+      "homepage": "https://github.com/wxichen/aicode-plugins/tree/main/guizang-design",
+      "license": "AGPL-3.0",
+      "tags": [
+        "skill",
+        "ui",
+        "tool"
+      ],
+      "version": "1.0.0",
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/wxichen.guizang-design_1.0.0.zip"
+    },
+    {
       "id": "vanta.niang",
       "name": {
         "default": "Vanta Niang",
