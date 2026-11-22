@@ -233,6 +233,14 @@ def main() -> int:
         if asset_ver and asset_ver != text:
             print(f"[drop] {pid} 的 version({text}) 与包名({fname}) 不一致")
             continue
+        # 包名里的插件 id 也必须对得上：上游把多个插件塞进同一个 release 时，
+        # 只取第一个 zip 会把 A 的包挂到 B 名下，装上去是另一个插件。
+        if fname:
+            stem = fname[:-4] if fname.lower().endswith(".zip") else fname
+            asset_id = stem.rsplit("_", 1)[0] if "_" in stem else stem
+            if asset_id and asset_id != pid:
+                print(f"[drop] {pid} 的包名属于 {asset_id}，数据串了")
+                continue
         clean.append(entry)
     merged = clean
 
