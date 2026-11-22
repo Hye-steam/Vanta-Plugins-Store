@@ -100,6 +100,24 @@ def download(url: str, target: pathlib.Path) -> bool:
     return True
 
 
+SEMVER = re.compile(r"^\d+\.\d+(\.\d+)?")
+
+
+def version_from_asset(name: str):
+    """从资产名 `<id>_<version>.zip` 里取版本号。
+
+    只认真正的 SemVer。上游作者可能把 tag 打成 `guizang-design-v1.0.0` 这类
+    带前缀的形式，`.lstrip("v")` 去不掉（开头不是 v），直接写进索引用会让
+    客户端判定「version 非法」并整份索引拒绝加载。
+    """
+    if not name:
+        return None
+    stem = name[:-4] if name.lower().endswith(".zip") else name
+    tail = stem.rsplit("_", 1)[-1].strip()
+    tail = tail[1:] if tail[:1] in ("v", "V") else tail
+    return tail if SEMVER.match(tail) else None
+
+
 def latest_asset(repo: str):
     """返回 (version, asset_name, download_url)；失败返回 (None, None, None)。"""
     try:
@@ -110,8 +128,10 @@ def latest_asset(repo: str):
     tag = (rel.get("tag_name") or "").lstrip("v")
     asset = next((a for a in rel.get("assets", []) if a["name"].endswith(".zip")), None)
     if not asset:
-        return tag or None, None, None
-    return tag or None, asset["name"], asset["browser_download_url"]
+        return (tag if SEMVER.match(tag) else None), None, None
+    # 优先用资产名解析出的版本；解析不出再退回 tag（同样只认 SemVer）
+    version = version_from_asset(asset["name"]) or (tag if SEMVER.match(tag) else None)
+    return version, asset["name"], asset["browser_download_url"]
 
 
 def main() -> int:
@@ -188,6 +208,33 @@ def main() -> int:
         if path.is_file() and path.name not in wanted_files:
             path.unlink()
             print(f"  删除已下架 {path.name}")
+
+    # ── 发布前校验：version 必须是 SemVer，否则整条丢弃 ──
+    # 客户端对非法 version 是「整份索引拒绝加载」，一条脏数据就能让商店打不开。
+    # 宁可少一个插件，也不能让所有人看不到商店。
+    clean = []
+    for entry in merged:
+        pid = entry.get("id") or "?"
+        ver = entry.get("version")
+        if ver is None:
+            clean.append(entry)
+            continue
+        text = str(ver)
+        if text[:1] in ("v", "V"):
+            print(f"[drop] {pid} 的 version 以 v 开头：{text}")
+            continue
+        if not SEMVER.match(text):
+            print(f"[drop] {pid} 的 version 不是 SemVer：{text}")
+            continue
+        # 包名里的版本应与 version 一致，不一致说明数据串了
+        url = entry.get("package_url") or ""
+        fname = urllib.parse.unquote(url.rsplit("/", 1)[-1]) if url else ""
+        asset_ver = version_from_asset(fname)
+        if asset_ver and asset_ver != text:
+            print(f"[drop] {pid} 的 version({text}) 与包名({fname}) 不一致")
+            continue
+        clean.append(entry)
+    merged = clean
 
     # 顶层必须是 {schema_version, plugins}：写成裸数组会被客户端判为「索引内容无效」。
     document = {"schema_version": 1, "plugins": merged}
