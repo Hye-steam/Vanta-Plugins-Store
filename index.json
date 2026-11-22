@@ -411,27 +411,6 @@
       "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/jieapi.remote-ports_1.0.0.zip"
     },
     {
-      "id": "wxichen.dsh-pet",
-      "name": {
-        "default": "DSH Pet",
-        "zh-CN": "AiCode 桌宠"
-      },
-      "description": {
-        "default": "A floating desktop pet adapted from dsh-pet for AiCode. It plays transparent animations, reacts to AiCode runs, accepts chat prompts and can be controlled by AI tools.",
-        "zh-CN": "将 dsh-pet 适配到 AiCode 的悬浮桌宠：播放透明动画、响应 AiCode 运行状态、写入聊天提示词，并支持 AI 工具控制。"
-      },
-      "author": "wxichen",
-      "repository": "https://github.com/wxichen/aicode-plugins",
-      "logo": "https://raw.githubusercontent.com/wxichen/aicode-plugins/main/dsh-pet/assets/logo.png",
-      "license": "MIT",
-      "tags": [
-        "ui",
-        "other"
-      ],
-      "version": "1.0.0",
-      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/wxichen.guizang-design_1.0.0.zip"
-    },
-    {
       "id": "vanta.niang",
       "name": {
         "default": "Vanta Niang",
