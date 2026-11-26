@@ -562,6 +562,27 @@
       "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/chuqing.core_1.0.0.zip",
       "repository": "https://github.com/Hye-steam/Vanta-Plugins-Store",
       "sha256": "2a0bded6c48b72b27cc50fa48bf1654d64e6b39c2614e85aa1448ad3df6034d2"
+    },
+    {
+      "id": "dsh.purge",
+      "name": {
+        "default": "DSH Purge",
+        "zh-CN": "破甲注入器"
+      },
+      "description": {
+        "default": "Official pick, contributed by a community member: ships the DeepSeek Harness (dsh-purge) jailbreak prompt library into VantaCode — browse and edit the persona prompt plus six red-team role prompts, inject them into VantaCode custom prompts or a DSH prompt-inject.md, and install the bundled red-team skill pack.",
+        "zh-CN": "官方收录 · 群友提供：把 DeepSeek Harness 破甲插件（dsh-purge）的提示词库搬进 VantaCode，可浏览、编辑小码酱破甲提示词与六个红队角色提示词，一键注入到 VantaCode 自定义提示词或 DSH 的 prompt-inject.md，并安装随包的红队技能包。"
+      },
+      "author": "牛马圣体",
+      "license": "SEE LICENSE",
+      "version": "1.0.7",
+      "tags": [
+        "skill",
+        "tool"
+      ],
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/dsh.purge_1.0.7.zip",
+      "repository": "https://github.com/Hye-steam/Vanta-Plugins-Store",
+      "sha256": "01a846b5fae87a2b4b4f3720a4f5e4a2b19e1b546ab8b0343fce1bc583fcd45d"
     }
   ]
 }
