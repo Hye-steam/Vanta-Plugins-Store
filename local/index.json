@@ -56,5 +56,26 @@
     "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/dsh.purge_1.0.7.zip",
     "repository": "https://github.com/Hye-steam/Vanta-Plugins-Store",
     "sha256": "01a846b5fae87a2b4b4f3720a4f5e4a2b19e1b546ab8b0343fce1bc583fcd45d"
+  },
+  {
+    "id": "magpie.gateway",
+    "name": {
+      "default": "Magpie Gateway",
+      "zh-CN": "Magpie 网关"
+    },
+    "description": {
+      "default": "Runs magpie, the local AI gateway, inside the app's Linux environment: one endpoint speaking OpenAI Chat, OpenAI Responses, Anthropic Messages and Gemini, pooling several Claude/ChatGPT/Copilot subscriptions behind one model name with quota-aware failover, and masking secrets before a request leaves the machine. Ships a native panel for status, install, start/stop, ports, web key and install proxy, plus an OpenAI-compatible provider.",
+      "zh-CN": "在 App 的 Linux 环境里安装并托管 magpie 本地 AI 网关：一个端点同时说 OpenAI Chat、OpenAI Responses、Anthropic Messages 与 Gemini，把多个 Claude / ChatGPT / Copilot 订阅汇成一个模型名并按额度自动切换，请求出本机前把密钥等敏感值替换成占位符。自带原生面板：状态、安装、启停、端口、网页 key、安装代理，并注册为 OpenAI 兼容供应商。"
+    },
+    "author": "magpie",
+    "license": "MIT",
+    "version": "1.4.1",
+    "tags": [
+      "provider",
+      "integration"
+    ],
+    "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/magpie.gateway_1.4.1.zip",
+    "repository": "https://github.com/htwdwu/magpie-gateway",
+    "sha256": "6fa769b45146206e0cefa559dd7cc50537900ee8ad0dead056a8daed5550f96b"
   }
 ]
