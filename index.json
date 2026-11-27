@@ -416,10 +416,10 @@
         "default": "Turn Guard",
         "zh-CN": "轮数守卫"
       },
-      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/%E4%B8%80%E6%9D%9F%E6%8C%BD%E9%A3%8E.turn-guard_1.1.2.zip",
-      "published_at": "2026-11-27T17:48:29Z",
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/%E4%B8%80%E6%9D%9F%E6%8C%BD%E9%A3%8E.turn-guard_2.1.0.zip",
+      "published_at": "2026-11-27T18:49:37Z",
       "repository": "https://github.com/demo/nox-turn-guard",
-      "version": "1.1.2"
+      "version": "2.1.0"
     },
     {
       "author": "yyds0399",
