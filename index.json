@@ -462,24 +462,26 @@
       "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/wxichen.guizang-design_1.0.0.zip"
     },
     {
-      "id": "jieapi.backup-helper",
+      "id": "jieapi.magpie-gateway",
       "name": {
-        "default": "Backup Helper",
-        "zh-CN": "备份助手"
+        "default": "Magpie Gateway",
+        "zh-CN": "Magpie 网关"
       },
       "description": {
-        "default": "Adds memories, skills, MCP configs and subagents to the host backup archive, and restores them after an import. Requires the plugin-level backup event permission.",
-        "zh-CN": "把记忆、技能、MCP 配置与子代理写入宿主备份包，并在导入还原后写回。需要在插件详情中单独开启「备份与还原事件」授权。"
+        "default": "Runs the magpie gateway (usemagpie.ai) inside the container, registers it as an OpenAI-compatible provider, and opens magpie's own web console for providers, models and routing.",
+        "zh-CN": "在容器内运行 magpie（usemagpie.ai）网关，自动注册为 OpenAI 兼容提供商，并提供 magpie 自带网页控制台，用来添加订阅 / API Key、选择模型与路由。"
       },
       "author": "jieapi",
       "repository": "https://github.com/jieapi/aicode-plugins",
-      "logo": "https://raw.githubusercontent.com/jieapi/aicode-plugins/main/backup-helper/icons/icon.png",
+      "logo": "https://raw.githubusercontent.com/jieapi/aicode-plugins/main/magpie-gateway/icons/icon.png",
       "license": "MIT",
       "tags": [
-        "integration"
+        "provider",
+        "tool",
+        "ui"
       ],
-      "version": "1.0.0",
-      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/jieapi.backup-helper_1.0.0.zip"
+      "version": "0.1.1",
+      "package_url": "https://raw.githubusercontent.com/Hye-steam/Vanta-Plugins-Store/main/packages/jieapi.magpie-gateway_0.1.1.zip"
     },
     {
       "id": "vanta.niang",
